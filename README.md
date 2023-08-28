@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-    <img src="assets/" alt="logo" width="130"  height="auto" />
+    <img src="assets/school-library-logo.png" alt="logo" width="300"  height="auto" />
     <h1><b>OOP School Library</b></h1>
 </div>
 
