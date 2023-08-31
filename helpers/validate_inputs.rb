@@ -1,8 +1,10 @@
-def get_name_and_age
-  age = validate_age_input
-  name = validate_name_input
+def validate_inputs
+  validated_inputs = {}
 
-  { age: age, name: name }
+  validated_inputs[:age] = validate_age_input
+  validated_inputs[:name] = validate_name_input
+
+  validated_inputs
 end
 
 def validate_age_input
@@ -12,7 +14,11 @@ def validate_age_input
     print 'Age: '
     input = gets.chomp
 
-    age = Integer(input) rescue nil
+    age = begin
+      Integer(input)
+    rescue StandardError
+      nil
+    end
     puts 'Age must be a number or > 1' if age.nil? || age < 1
   end
 
