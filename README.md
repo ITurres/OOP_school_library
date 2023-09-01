@@ -119,9 +119,8 @@ Example commands:
 ## 🔭 Future Features <a name="future-features"></a>
 
 - [x] Class Decorators.
-- [ ] Associations.
-- [ ] Basic UI.
-- [ ] Tests.
+- [x] Associations.
+- [x] Basic UI.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
