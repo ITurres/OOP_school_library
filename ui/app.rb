@@ -61,11 +61,38 @@ class App
   end
 
   def create_book
-    # ? code
+    print 'Title: '
+    title = gets.chomp
+    print 'Author: '
+    author = gets.chomp
+
+    book = Book.new(title, author)
+    @books.push(book)
+
+    puts "Book #{book.title} successfully created!!"
   end
 
   def create_book_rental
     # ? code
+    puts 'Select a book from the following list by number'
+    list_all_books(with_index: true)
+
+    book_index = gets.chomp.to_i
+    book = @books[book_index]
+
+    puts 'Select a person from the following list by number (not id)'
+    list_all_people(with_index: true)
+
+    person_index = gets.chomp.to_i
+    person = @people[person_index]
+
+    print 'Date: '
+    date = gets.chomp
+
+    rental = Rental.new(date, book, person)
+    @rentals.push(rental)
+
+    puts 'Rental created successfully!!'
   end
 
   def list_all_rentals(person_id)
