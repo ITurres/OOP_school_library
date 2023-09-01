@@ -1,6 +1,12 @@
 require_relative 'dependencies'
 
 class App
+  def initialize
+    @people = []
+    @books = []
+    @rentals = []
+  end
+
   def list_all_books
     # ? code
   end
@@ -23,13 +29,19 @@ class App
       parent_permission = gets.chomp.downcase == 'y'
 
       student = Student.new(age, name, parent_permission)
+      @people.push(student)
+
       puts "Student #{student.name} successfully created!!"
-    else
+    elsif input == 2
       print 'Specialization: '
       specialization = gets.chomp
 
       teacher = Teacher.new(age, name, specialization)
+      @people.push(teacher)
+
       puts "Teacher #{teacher.name} successfully created!!"
+    else
+      puts 'Invalid option, please try again.'
     end
   end
 
