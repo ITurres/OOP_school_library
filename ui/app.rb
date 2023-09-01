@@ -14,8 +14,20 @@ class App
     puts
   end
 
-  def list_all_people
-    # ? code
+  def list_all_people(with_index: false)
+    @people.each_with_index do |person, index|
+      person_type = person.class.name
+
+      case person_type
+      when 'Student'
+        puts "#{with_index ? "#{index})" : ''}[Student] Name: #{person.name}, " \
+             "ID: #{person.id}, Age: #{person.age}"
+      when 'Teacher'
+        puts "#{with_index ? "#{index})" : ''}[Teacher] Name: #{person.name}, " \
+             "ID: #{person.id}, Age: #{person.age}"
+      end
+    end
+    puts
   end
 
   def create_teacher_or_student
