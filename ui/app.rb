@@ -7,8 +7,11 @@ class App
     @rentals = []
   end
 
-  def list_all_books
-    # ? code
+  def list_all_books(with_index: false)
+    @books.each_with_index do |book, index|
+      puts "#{with_index ? "#{index})" : ''} Title: #{book.title}, Author: #{book.author}."
+    end
+    puts
   end
 
   def list_all_people
