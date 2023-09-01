@@ -73,7 +73,6 @@ class App
   end
 
   def create_book_rental
-    # ? code
     puts 'Select a book from the following list by number'
     list_all_books(with_index: true)
 
@@ -95,8 +94,22 @@ class App
     puts 'Rental created successfully!!'
   end
 
-  def list_all_rentals(person_id)
-    # ? code
+  def list_all_rentals
+    print 'Enter person id: '
+    person_id = gets.chomp.to_i
+
+    @rentals.each do |rental|
+      person = rental.person
+
+      puts 'Rentals: '
+
+      if person.is_a?(Student) || person.is_a?(Teacher)
+        puts rental.rental_to_s if person.id == person_id
+      else
+        puts "Person with ID #{person_id} not found."
+      end
+    end
+    puts
   end
 
   def exit_program
