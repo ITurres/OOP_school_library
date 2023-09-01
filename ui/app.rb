@@ -51,7 +51,7 @@ class App
       print 'Specialization: '
       specialization = gets.chomp
 
-      teacher = Teacher.new(age, name, specialization)
+      teacher = Teacher.new(age, specialization, name)
       @people.push(teacher)
 
       puts "Teacher #{teacher.name} successfully created!!"
@@ -85,8 +85,11 @@ class App
     person_index = gets.chomp.to_i
     person = @people[person_index]
 
-    print 'Date: '
-    date = gets.chomp
+    date = ''
+    while date !~ /\d{4}-\d{2}-\d{2}/ # ?=> YYYY-MM-DD
+      print 'Enter a date in YYYY-MM-DD format: '
+      date = gets.chomp
+    end
 
     rental = Rental.new(date, book, person)
     @rentals.push(rental)
@@ -101,10 +104,12 @@ class App
     @rentals.each do |rental|
       person = rental.person
 
+      next unless person.is_a?(Student) || person.is_a?(Teacher)
+
       puts 'Rentals: '
 
-      if person.is_a?(Student) || person.is_a?(Teacher)
-        puts rental.rental_to_s if person.id == person_id
+      if person.id == person_id
+        puts rental.rental_to_s
       else
         puts "Person with ID #{person_id} not found."
       end
